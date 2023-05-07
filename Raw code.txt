@@ -1,0 +1,13 @@
+  document.title = "Close this to stop";
+  document.body.innerHTML = '<div style="display:flex;justify-content:center;align-items:center;height:100%;"><p style="font-size:3em;text-align:center;">Close when done finding pin</p></div>';
+  var interval = setInterval(function() {
+      var code = Math.floor(Math.random() * 9000000 + 1000000);
+      var url = "https://kahoot.it/?pin=" + code + "&refer_method=link";
+      var win = window.open(url, "_blank");
+      setTimeout(function() {
+          if (win.document.querySelector('div[data-functional-selector="notification-bar-error"]')) {
+              win.close();
+          }
+      }, 600);
+  }, 600);
+
